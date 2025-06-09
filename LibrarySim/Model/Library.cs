@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using LibrarySim.View;
 
 namespace LibrarySim.Model
 {
@@ -18,6 +19,16 @@ namespace LibrarySim.Model
         public void LoadBooks(string file)
         {
             //Implement me
+            using StreamReader sr = new StreamReader("books.txt");
+
+            // print content
+            while ((file = sr.ReadLine()) != null)
+            {
+                file.Split(",");
+            }
+            
+            
+
         }
 
         public IEnumerable<IBook> GetAllBooks() => books.AsReadOnly();
@@ -53,13 +64,27 @@ namespace LibrarySim.Model
         public string BorrowBook(string title)
         {
 
-            //Implement me 
+            //Implement me (title of book)
+            foreach (Book book in books)
+            {
+                if (book.IsBorrowed)
+                {
+                    book.Borrow(); //cant have writelines
+                }
+            }
             return "";
         }
 
         public string ReturnBook(string title)
         {
-            //Implement me 
+            //Implement me
+            foreach (Book book in books)
+            {
+                if (!book.IsBorrowed)
+                {
+                    book.ReturnBook();
+                }
+            } 
             return "";
         }
 
