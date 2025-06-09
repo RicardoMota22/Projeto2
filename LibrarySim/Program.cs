@@ -20,6 +20,14 @@ namespace LibrarySim
             string filepath = args[0];
 
             //Implement me
+            Library library = new Library();
+            ConsoleView view = new ConsoleView();
+
+            LibraryController controller = new LibraryController(library, view);
+
+            controller.Run();
+
+
             
         }
     }
